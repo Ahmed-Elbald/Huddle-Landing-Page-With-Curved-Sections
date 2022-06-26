@@ -1,0 +1,341 @@
+// Imprted files
+
+@use "../Styles/VM.scss" as *;
+
+// Global 
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $btnsColor;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $headers;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  text-transform: capitalize;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+}
+
+i,
+a,
+button {
+  cursor: pointer;
+}
+
+.container {
+  margin: auto;
+  padding: 0 0.5em;
+
+  @include min-mq(800px) {
+    width: 500px;
+  }
+
+  @include min-mq(1200px) {
+    width: 1100px;
+  }
+}
+
+// Components
+
+.header {
+  color: $headers;
+  font-family: 'Poppins', sans-serif;
+}
+
+.regular-btn {
+  padding: 1em 2em;
+  border-radius: 100vh;
+  background-color: $btnsColor;
+  color: white;
+  transition-duration: .5s;
+  text-transform: capitalize;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $btnsHoverColor;
+  }
+}
+
+.fadded-text {
+  color: $headers;
+  opacity: .9;
+}
+
+// header
+
+header {
+  padding: 2em .5em;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      height: 20px;
+    }
+
+    button.signin-btn {
+      padding: .5em 1em;
+      color: $btnsHoverColor;
+      background-color: transparent;
+      border: 1px solid $btnsHoverColor;
+      border-radius: 100vh;
+      text-transform: capitalize;
+      font-size: .7rem;
+      transition-duration: .5s;
+
+      &:hover {
+        box-shadow: 0 0 5px $btnsHoverColor;
+      }
+    }
+  }
+}
+
+// landing
+
+main {
+  .container {
+    @include flex-centering;
+    padding: 5em 2em;
+    flex-direction: column;
+    gap: 5em;
+    text-align: center;
+
+    h1 {
+      font-size: 1.2rem;
+    }
+
+    p.intro {
+      font-size: .8rem;
+      line-height: 25px;
+      font-weight: 600;
+      max-width: 600px;
+    }
+
+    >img.landing-img {
+      @include min-mq(800px) {
+        max-width: 500px;
+      }
+    }
+
+    .landing-stat-container {
+      @include flex-centering;
+      flex-wrap: wrap;
+      gap: 4em 6em;
+
+      >div {
+        width: 140px;
+        display: flex;
+        flex-direction: column;
+        gap: .3em;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        span.header {
+          align-self: flex-start;
+          font-size: 2.5rem;
+          font-weight: 700;
+        }
+
+        span.fadded-text {
+          width: 100%;
+          font-size: .8rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+// Sections
+
+section {
+  margin: 3em 0;
+
+  &.ready {
+    @include flex-centering;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 3em 0;
+    text-align: center;
+  }
+
+  .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    text-align: center;
+
+    &.section-bg {
+      background-color: $sectionsBg;
+      transform: scaleY(1.035);
+    }
+
+    &:not(.section-bg) {
+      img {
+        @include min-mq(1032px) {
+          order: 2;
+        }
+      }
+    }
+
+    img {
+      width: 90%;
+      max-width: 500px;
+    }
+  }
+
+  .section-text {
+    >h2 {
+      margin: 2em 0 1em;
+    }
+
+    >p {
+      font-size: .8rem;
+      line-height: 25px;
+      font-weight: 600;
+      max-width: 500px;
+    }
+  }
+}
+
+// Footer
+
+footer {
+  background-color: $headers;
+  color: white;
+
+  >img {
+    background-color: white;
+  }
+
+  .container {
+    padding: 2em 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10em;
+
+
+    p {
+      margin: 1.5em 0;
+      font-size: .8em;
+      line-height: 25px;
+    }
+
+    .newsletter {
+      max-width: 400px;
+
+      @media (min-width: 1200px) {
+        order: 2;
+      }
+
+
+      input.newsletter-input {
+        width: 100%;
+        padding: 1em;
+        border-radius: 5px;
+        margin-bottom: 1em;
+      }
+
+      button.regular-btn {
+        border-radius: 5px;
+        float: right;
+      }
+    }
+
+    .contact {
+      max-width: 400px;
+
+
+      .logo-in-footer {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        img {
+          width: 30px;
+        }
+
+        span {
+          font-size: 2rem;
+          font-weight: 700;
+        }
+      }
+
+      .contact-box {
+        margin-bottom: 1em;
+
+        img {
+          width: 15px;
+        }
+      }
+    }
+
+    .social-icons {
+      margin-top: 2em;
+
+      i {
+        font-size: 1.3rem;
+        margin-right: .5em;
+        transition-duration: .5s;
+
+        &:hover {
+          &:first-child {
+            color: #5a5aaf9e;
+          }
+
+          &:last-child {
+            color: #59c9ff;
+          }
+
+          &:nth-child(2) {
+            color: #fd584ced;
+          }
+        }
+      }
+    }
+  }
+
+}
